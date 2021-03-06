@@ -22,7 +22,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: .
           file: https://github.com/Daniela-git/atsea-sample-shop-app/app
           tags: dhiguitaa/final_project:latest
       - name: Image digest
