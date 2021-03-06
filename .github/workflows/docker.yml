@@ -9,6 +9,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -18,6 +20,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          push: true
           file: ./app/Dockerfile
+          push: true
           tags: dhiguitaa/final_project:latest
