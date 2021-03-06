@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          file: refs/heads/master/app
+          file: refs/heads/master/app/Dockerfile
           tags: dhiguitaa/final_project:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
