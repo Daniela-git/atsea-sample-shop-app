@@ -24,6 +24,6 @@ jobs:
           push: true
           context: .
           file: app
-          tags: dhiguitaa/final_project:latest
+          tags: dhiguitaa/final_project:latest,dhiguitaa/final_project:$GITHUB_SHA
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
