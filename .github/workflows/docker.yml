@@ -18,10 +18,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Build and push
         uses: docker/build-push-action@v2
-        env:
-          COMMIT_ID: $GITHUB_SHA
         with:
           context: ./app
           push: true
-          tags: dhiguitaa/final_project:latest, dhiguitaa/final_project:$COMMIT_ID 
+          tags: dhiguitaa/final_project:latest, dhiguitaa/final_project:${{GITHUB_SHA}} 
 
