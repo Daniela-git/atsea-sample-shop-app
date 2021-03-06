@@ -21,4 +21,4 @@ jobs:
         with:
           context: ./app
           push: true
-          tags: dhiguitaa/final_project:latest, dhiguitaa/final_project:$GITHUB_SHA
+          tags: dhiguitaa/final_project:latest, dhiguitaa/final_project: $GITHUB_SHA
