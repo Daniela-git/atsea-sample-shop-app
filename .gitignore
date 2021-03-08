@@ -21,7 +21,7 @@ site.conf
 linux.md
 src/
 certs/
-
+.vscode
 ###################
 *.com
 *.class
