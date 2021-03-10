@@ -35,4 +35,4 @@ jobs:
       #start the ec2
       - name: start the instance
         run: |
-          aws ec2 start-instances --instance-ids ${{ INSTANCE_ID }}
+          aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
