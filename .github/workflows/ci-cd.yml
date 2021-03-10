@@ -1,4 +1,4 @@
-name: ci with Docker
+name: ci/cd
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - "master"
 
 jobs:
+  # create images
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -43,3 +44,4 @@ jobs:
           context: ./reverse_proxy
           push: true
           tags: dhiguitaa/reverse_proxy_fp:latest, dhiguitaa/reverse_proxy_fp:${{ github.sha }}
+  # deploy the app
