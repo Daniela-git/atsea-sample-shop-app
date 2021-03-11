@@ -9,7 +9,7 @@ jobs:
   aws:
     # needs: docker
     runs-on: ubuntu-latest
-    env: 
+    env:
       USER_NAME: Epalaciol
       REPO: atsea_shop_test
     steps:
@@ -28,15 +28,14 @@ jobs:
       - name: start the instance
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
-      
+
       - name: Trigger end to end tests
-      run: |
-        curl --request POST \
-        --url https://api.github.com/repos/${{ env.USER_NAME }}/${{ env.REPO }}/dispatches \
-        --header 'authorization: Bearer ${{ secrets.ACCESS_TOKEN }}' \
-        --header 'Accept: application/vnd.github.v3+json' \
-        --data '{
-          "event_type": "deployed"
-          }' \
-        --fail
-        
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ env.USER_NAME }}/${{ env.REPO }}/dispatches \
+          --header 'authorization: Bearer ${{ secrets.ACCESS_TOKEN }}' \
+          --header 'Accept: application/vnd.github.v3+json' \
+          --data '{
+            "event_type": "deployed"
+            }' \
+          --fail
