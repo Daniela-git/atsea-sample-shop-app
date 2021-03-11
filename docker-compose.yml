@@ -2,33 +2,27 @@ version: "3.1"
 
 services:
   reverse_proxy:
-    build: ./reverse_proxy
+    image: dhiguitaa/reverse_proxy_fp
     user: nginx
 
   database:
-    build: 
-       context: ./database
-    image: atsea_db
-    user: postgres
+    image: dhiguitaa/database_fp
     environment:
       POSTGRES_USER: gordonuser
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
       POSTGRES_DB: atsea
     ports:
-      - "5432:5432" 
+      - "5432:5432"
     networks:
       - back-tier
     secrets:
       - postgres_password
 
   appserver:
-    build:
-       context: app
-       dockerfile: Dockerfile
-    image: atsea_app
+    image: dhiguitaa/app_fp
     user: gordon
     ports:
-      - "8080:8080" 
+      - "8080:8080"
       - "5005:5005"
     networks:
       - front-tier
@@ -37,8 +31,7 @@ services:
       - postgres_password
 
   payment_gateway:
-    build:
-      context: payment_gateway
+    image: dhiguitaa/payment_gateway_fp
     networks:
       - payment
     secrets:
