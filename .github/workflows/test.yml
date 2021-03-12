@@ -31,16 +31,8 @@ jobs:
       
       - name: start docker
         run: |
-          sudo service docker start
-          
-      - name: init swarm 
-        run: |
-          docker swarm init
-
-      - name: build docker-compos
-        run: |
-          docker-compose up --build -d
-          
+          aws ssm send-command --instance-ids ${{ secrets.INSTANCE_ID }}  --parameters '{"commands":["sudo service docker start", "docker swarm init", "docker-compose up --build -d]}
+    
       - name: Trigger end to end tests
         run: |
           curl --request POST \
