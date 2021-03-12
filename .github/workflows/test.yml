@@ -28,7 +28,15 @@ jobs:
       - name: start the instance
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
+      
+      - name: start docker
+        run: |
+          sudo service docker start
 
+      - name: build docker-compos
+        run: |
+          docker-compose up --build -d
+          
       - name: Trigger end to end tests
         run: |
           curl --request POST \
