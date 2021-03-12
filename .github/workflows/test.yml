@@ -32,10 +32,10 @@ jobs:
       - name: test send commands
         run: |
           aws ssm send-command \
-            --instance-ids ${{ secrets.INSTANCE_ID }} \
-	          --document-name "AWS-RunShellScript" \
-          	--parameters '{"commands":["#!/bin/bash","cd /home/ec2-user/atsea-sample-shop-app","docker-compose up -d"]}' \
-	          --output text
+                --instance-ids ${{ secrets.INSTANCE_ID }} \
+                --document-name "AWS-RunShellScript" \
+                --parameters '{"commands":["#!/bin/bash","cd /home/ec2-user/atsea-sample-shop-app","docker-compose up -d"]}' \
+                --output text
     
       - name: Trigger end to end tests
         run: |
