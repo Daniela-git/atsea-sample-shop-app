@@ -32,6 +32,10 @@ jobs:
       - name: start docker
         run: |
           sudo service docker start
+          
+      - name: init swarm 
+        run: |
+          docker swarm init
 
       - name: build docker-compos
         run: |
