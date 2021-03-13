@@ -1,4 +1,6 @@
-name: ci with Docker
+
+name: ci/cd
+
 
 on:
   push:
@@ -43,6 +45,7 @@ jobs:
           context: ./reverse_proxy
           push: true
           tags: dhiguitaa/reverse_proxy_fp:latest, dhiguitaa/reverse_proxy_fp:${{ github.sha }}
+
   #deploy the app
   aws:
     needs: docker
@@ -82,3 +85,4 @@ jobs:
             "event_type": "deployed"
             }' \
           --fail
+
