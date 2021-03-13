@@ -31,7 +31,7 @@ jobs:
 
       - name: test send commands
         run: |
-          aws ec2 get-console-output --instance-id ${{ secrets.INSTANCE_ID }} --output text 
+         aws ec2 import-key-pair --key-name "atsea_d_e"
           
       - name: Trigger end to end tests
         run: |
