@@ -29,9 +29,9 @@ jobs:
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
 
-      - name: test send commands
+      - name: docker 
         run: |
-         aws ec2 import-key-pair --key-name "atsea_d_e"
+         docker-compose up --build -d
           
       - name: Trigger end to end tests
         run: |
