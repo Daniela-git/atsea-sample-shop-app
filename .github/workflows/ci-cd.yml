@@ -1,14 +1,15 @@
 name: ci/cd
-
 on:
   push:
     branches:
       - "master"
-
 jobs:
   # create images
   docker:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        context: [app, database, payment_gateway, reverse_proxy]
     steps:
       #copy the repo
       - name: Check out the repo
@@ -20,28 +21,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       #create and push the images
-      - name: Build and push app
+      - name: Build and push ${{ matrix.context }}
         uses: docker/build-push-action@v2
         with:
-          context: ./app
+          context: ./${{ matrix.context }}
           push: true
-          tags: dhiguitaa/app_fp:latest, dhiguitaa/app_fp:${{ github.sha }}
-      - name: Build and push database
-        uses: docker/build-push-action@v2
-        with:
-          context: ./database
-          push: true
-          tags: dhiguitaa/database_fp:latest, dhiguitaa/database_fp:${{ github.sha }}
-      - name: Build and push payment_gateway
-        uses: docker/build-push-action@v2
-        with:
-          context: ./payment_gateway
-          push: true
-          tags: dhiguitaa/payment_gateway_fp:latest, dhiguitaa/payment_gateway_fp:${{ github.sha }}
-      - name: Build and push reverse_proxy
-        uses: docker/build-push-action@v2
-        with:
-          context: ./reverse_proxy
-          push: true
-          tags: dhiguitaa/reverse_proxy_fp:latest, dhiguitaa/reverse_proxy_fp:${{ github.sha }}
-  # deploy the app
+          tags: dhiguitaa/${{ matrix.context }}_fp:latest, dhiguitaa/${{ matrix.context }}_fp:${{ github.sha }}
