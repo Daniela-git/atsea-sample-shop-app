@@ -28,15 +28,15 @@ jobs:
       - name: start the instance
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
-          
-      - name: test send commands
-        run: |
-          aws ssm send-command \
-                --instance-ids ${{ secrets.INSTANCE_ID }} \
-                --document-name "AWS-RunShellScript" \
-                --parameters '{"commands":["#!/bin/bash","cd /home/ec2-user/atsea-sample-shop-app","docker-compose up -d"]}' \
-                --output text
-    
+
+      # - name: test send commands
+      #   run: |
+      #     aws ssm send-command \
+      #           --instance-ids ${{ secrets.INSTANCE_ID }} \
+      #           --document-name "AWS-RunShellScript" \
+      #           --parameters '{"commands":["#!/bin/bash","cd /home/ec2-user/atsea-sample-shop-app","docker-compose up -d"]}' \
+      #           --output text
+
       - name: Trigger end to end tests
         run: |
           curl --request POST \
