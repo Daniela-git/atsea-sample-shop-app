@@ -28,6 +28,10 @@ jobs:
       - name: start the instance
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
+          
+      - name: start  docker swarm
+        run: |
+          docker swarm init
 
       - name: docker 
         run: |
