@@ -4,7 +4,6 @@ on:
     branches:
       - "test/aws"
 jobs:
-  # create images
   docker:
     runs-on: ubuntu-latest
     strategy:
