@@ -31,12 +31,8 @@ jobs:
 
       - name: test send commands
         run: |
-          aws ec2 send-command \
-                --instance-ids ${{ secrets.INSTANCE_ID }} \
-                --document-name "AWS-RunShellScript" \
-                --parameters '{"commands":["#!/bin/bash","cd /home/ec2-user/atsea-sample-shop-app","docker-compose up -d"]}' \
-                --output text
-
+          ls -la
+          
       - name: Trigger end to end tests
         run: |
           curl --request POST \
