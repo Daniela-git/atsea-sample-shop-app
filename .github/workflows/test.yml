@@ -31,7 +31,7 @@ jobs:
 
       - name: test send commands
         run: |
-          pwd
+          mssh ${{ secrets.INSTANCE_ID }}
           
       - name: Trigger end to end tests
         run: |
