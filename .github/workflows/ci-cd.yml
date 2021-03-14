@@ -68,7 +68,7 @@ jobs:
           timeout: 60s
           script: | 
             ls -la 
-            docker-compose up --build -d
+            docker stack deploy --compose-file docker-compose.yml
             
             
       - name: Trigger end to end tests
