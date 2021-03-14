@@ -47,29 +47,18 @@ jobs:
       #start the ec2
       - name: start the instance
         run: |
-          aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
-          
-      - name: star docker swarm
-        run: |
-         ifconfig
-         ping -c 5 3.128.131.98
-
-      - name: star docker swarm
-        run: |
-         sudo chmod 400 atsea_d_e.pem
-         ssh -tt -i "atsea_d_e.pem" ec2-user@ec2-3-128-131-98.us-east-2.compute.amazonaws.com
-         yes
-         ls -la
+          aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}          
 
       - name: Executing remote ssh commands using key
         uses: appleboy/ssh-action@master
         with:
           host: "ec2-3-128-131-98.us-east-2.compute.amazonaws.com"
-          username: ${{ secrets.INSTANCE_USERNAME }}
+          username: "epalaciol@unal.edu.co"
           key: ${{ secrets.ATSEA_KEY }}
           timeout: 60s
           script: | 
            ls -la
+           
       - name: Trigger end to end tests
         run: |
           curl --request POST \
