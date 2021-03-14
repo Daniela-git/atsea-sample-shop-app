@@ -48,6 +48,12 @@ jobs:
       - name: start the instance
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
+          
+      - name: star docker swarm
+        run: |
+         ifconfig
+         ping 3.128.131.98
+         ssh-keygen -R 3.128.131.98
 
       - name: star docker swarm
         run: |
