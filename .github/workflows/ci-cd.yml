@@ -52,17 +52,13 @@ jobs:
       - name: start  docker swarm
         run: |
           docker swarm init
-
-      - name: docker
-        run: |
-          scp -i ./atsea_d_e.pem ./docker-compose.yml  ec2-user@ec2-3-128-131-98.us-east-2.compute.amazonaws.com:/home/ec2-user/
-          
+   
       - name: connect ssh
         run : |
           ssh -i ./atsea_d_e.pem ec2-user@ec2-3-128-131-98.us-east-2.compute.amazonaws.com
       - name: run docker
         run : |
-          cd /home/ec2-user/
+          cd /home/ec2-user/atsea-sample-shop-app/
       - name: docker compose up
         run: |
           docker-compose up --build -d
