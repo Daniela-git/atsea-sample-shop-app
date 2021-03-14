@@ -48,6 +48,15 @@ jobs:
       - name: start the instance
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}
+      - name: multiple command
+        uses: appleboy/ssh-action@master
+        with:
+          host: "ec2-3-128-131-98.us-east-2.compute.amazonaws.com"
+          username: "epalaciol@unal.edu.co"
+          key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          port: 22
+          script: |
+            ls -al
 
       - name: start  docker swarm
         run: |
