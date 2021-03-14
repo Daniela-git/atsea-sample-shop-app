@@ -55,7 +55,7 @@ jobs:
 
       - name: docker
         run: |
-          docker-compose up --build -d
+          sudo ssh -i ${{ secrets.ATSEA_KEY}} ec2-user@ec2-3-128-131-98.us-east-2.compute.amazonaws.com
       #test
       - name: Trigger end to end tests
         run: |
