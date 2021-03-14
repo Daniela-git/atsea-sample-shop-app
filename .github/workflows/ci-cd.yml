@@ -52,7 +52,7 @@ jobs:
       - name: star docker swarm
         run: |
          ifconfig
-         ssh-keygen -R 3.128.131.98
+         ping -c 5 3.128.131.98
 
       - name: star docker swarm
         run: |
