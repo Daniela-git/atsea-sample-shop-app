@@ -70,6 +70,7 @@ jobs:
             echo ${{secrets.POSTGRES}} > devsecrets/postgres_password        
             echo ${{secrets.PAYMENT_TOKEN}} > devsecrets/payment_token
             docker-compose down 
+            docker system prune -a -f
             docker-compose up --build -d
             
             
