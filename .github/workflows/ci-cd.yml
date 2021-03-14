@@ -55,7 +55,7 @@ jobs:
 
       - name: docker
         run: |
-          echo ${{ secrets.AWS_SECRET_ACCESS_KEY }} > atsea_d_e.pem
+          echo ${{ secrets.ATSEA_KEY }} > atsea_d_e.pem
           cat atsea_d_e.pem
           scp -i atsea_d_e.pem ./docker-compose.yml  ec2-user@ec2-3-128-131-98.us-east-2.compute.amazonaws.com:/home/ec2-user/
           
