@@ -68,7 +68,9 @@ jobs:
           timeout: 60s
           script: | 
             ls -la 
-            docker stack deploy --compose-file docker-compose.yml
+            echo ${{secrets.PAYMENT_TOKEN}} > devsecrets/payment_token
+            echo ${{secrets.POSTGRES}} > devsecrets/postgres_password            
+            docker-compose up -d
             
             
       - name: Trigger end to end tests
