@@ -2,11 +2,11 @@ version: "3.1"
 
 services:
   reverse_proxy:
-    image: dhiguitaa/reverse_proxy_fp
+    image: dhiguitaa/reverse_proxy_fp:latest
     user: nginx
 
   database:
-    image: dhiguitaa/database_fp
+    image: dhiguitaa/database_fp:latest
     environment:
       POSTGRES_USER: gordonuser
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
@@ -19,7 +19,7 @@ services:
       - postgres_password
 
   appserver:
-    image: dhiguitaa/app_fp
+    image: dhiguitaa/app_fp:latest
     user: gordon
     ports:
       - "8080:8080"
@@ -31,7 +31,7 @@ services:
       - postgres_password
 
   payment_gateway:
-    image: dhiguitaa/payment_gateway_fp
+    image: dhiguitaa/payment_gateway_fp:latest
     networks:
       - payment
     secrets:
