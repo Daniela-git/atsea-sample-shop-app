@@ -55,7 +55,7 @@ jobs:
           host: "ec2-3-128-131-98.us-east-2.compute.amazonaws.com"
           port: 22
           username: "epalaciol@unal.edu.co"
-          key: ${{ secrets.ATSEA_KEY }}          
+          key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}          
           script: |
             ls -al
 
