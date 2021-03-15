@@ -55,6 +55,9 @@ jobs:
             aws ec2 describe-instance-status --instance-ids ${{ secrets.INSTANCE_ID }} --query 'InstanceStatuses[0].InstanceState.Name' > output.out
             EXIT=`cat output.out | grep -w running | wc -l`;
           done
+          if [ $EXIT -gt 0]; then
+            sleep 40
+          fi
           
       - name: Send file from repo to aws instance
         uses: appleboy/scp-action@master
