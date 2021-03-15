@@ -1,8 +1,17 @@
-# App Running on AWS
+# **HOMEWORK 6 S.A.P Perficient Latam**
+
+Team Members in this assigment:
+
+- Daniela Higuita Alcaraz
+- [Esteban Palacio Londoño](https://github.com/Epalaciol)
+
+## App Running on AWS
 
 [**Run APP with public IP**](http://3.128.131.98:8080)
 
 Run APP with public IP: `http://3.128.131.98:8080`
+
+Test Repositorie: [atsea_test](https://github.com/Epalaciol/atsea_shop_test)
 
 ![](atsea_store.png)
 #  AtSea Shop Demonstration Application
