@@ -48,6 +48,7 @@ jobs:
       - name: start the instance
         run: |
           aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}  
+          aws ec2 describe-instance-status --instance-ids ${{ secrets.INSTANCE_ID }}
           
       - name: Send file from repo to aws instance
         uses: appleboy/scp-action@master
