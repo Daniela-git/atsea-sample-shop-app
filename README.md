@@ -1,3 +1,8 @@
+# App Running on AWS
+
+[**ADDRESS**](http://3.128.131.98:8080)
+`http://3.128.131.98:8080`
+
 ![](atsea_store.png)
 #  AtSea Shop Demonstration Application
 
